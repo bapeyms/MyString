@@ -37,8 +37,8 @@ MyString::~MyString()
 
 void MyString::Print()
 {
-	cout << "String: " << str << endl;
-	cout << "Lenght: " << lenght << endl;
+	cout << str << endl;
+	cout << lenght << endl << endl;
 }
 
 bool MyString::MyStrStr(const char* st)
@@ -53,6 +53,43 @@ bool MyString::MyStrStr(const char* st)
 
 void MyString::MyStrcpy(MyString& obj)
 {
-	char* s = new char[obj.lenght];
-	strcpy_s(this->str, obj.lenght, s);
+	if (strlen(obj.str) + 1 > lenght)
+	{
+		delete[] str;
+		lenght = strlen(obj.str) + 1;
+		str = new char[lenght];
+	}
+	strcpy_s(this->str, lenght, obj.str);
+}
+
+int MyString::MyChr(char c)
+{
+	for (int i = 0; this->str[i] != '\0'; i++)
+	{
+		if (this->str[i] == c)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int MyString::MyStrLen()
+{
+	int len = 0;
+	for (int i = 0; this->str[i] != '\0'; i++)
+	{
+		len++;
+	}
+	return len;
+}
+
+void MyString::MyStrCat(MyString& b)
+{
+	int catSize = this->lenght + lenght + 1;
+	char* cat = new char[catSize];
+	for (int i = 0; i < catSize; i++)
+	{
+
+	}
 }

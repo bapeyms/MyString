@@ -13,5 +13,8 @@ public:
 	void Print();
 	bool MyStrStr(const char* st);
 	void MyStrcpy(MyString& obj);
+	int  MyChr(char c);
+	int MyStrLen();
+	void MyStrCat(MyString& b);
 };
 
