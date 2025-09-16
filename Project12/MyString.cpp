@@ -2,43 +2,39 @@
 #include <iostream>
 using namespace std;
 
-MyString::MyString() :str(nullptr), lenght(0)
+MyString::MyString() :str(nullptr), length(0)
 {
-	lenght = 80;
-	str = new char[lenght] {};
+	length = 80;
+	str = new char[length] {};
 }
-
 MyString::MyString(int size)
 {
-	lenght = size;
-	str = new char[lenght] {};
+	length = size;
+	str = new char[length] {};
 }
-
 MyString::MyString(const char* st)
 {
-	lenght = strlen(st);
-	str = new char[lenght + 1];
-	strcpy_s(str, lenght + 1, st);
+	length = strlen(st);
+	str = new char[length + 1];
+	strcpy_s(str, length + 1, st);
 }
-
 MyString::MyString(const MyString& obj)
 {
-	lenght = obj.lenght;
-	str = new char[lenght + 1];
-	strcpy_s(str, lenght + 1, obj.str);
+	length = obj.length;
+	str = new char[length + 1];
+	strcpy_s(str, length + 1, obj.str);
 
 } 
-
 MyString::~MyString()
 {
 	delete[] str;
-	lenght = 0;
+	length = 0;
 }
 
 void MyString::Print()
 {
 	cout << str << endl;
-	cout << lenght << endl << endl;
+	cout << length << endl;
 }
 
 bool MyString::MyStrStr(const char* st)
@@ -50,18 +46,16 @@ bool MyString::MyStrStr(const char* st)
 	}
 	return false;
 }
-
 void MyString::MyStrcpy(MyString& obj)
 {
-	if (strlen(obj.str) + 1 > lenght)
+	if (strlen(obj.str) + 1 > length)
 	{
 		delete[] str;
-		lenght = strlen(obj.str) + 1;
-		str = new char[lenght];
+		length = strlen(obj.str) + 1;
+		str = new char[length];
 	}
-	strcpy_s(this->str, lenght, obj.str);
+	strcpy_s(this->str, length, obj.str);
 }
-
 int MyString::MyChr(char c)
 {
 	for (int i = 0; this->str[i] != '\0'; i++)
@@ -73,7 +67,6 @@ int MyString::MyChr(char c)
 	}
 	return -1;
 }
-
 int MyString::MyStrLen()
 {
 	int len = 0;
@@ -83,13 +76,88 @@ int MyString::MyStrLen()
 	}
 	return len;
 }
-
 void MyString::MyStrCat(MyString& b)
 {
-	int catSize = this->lenght + lenght + 1;
+	int catSize = this->length + b.length + 1;
 	char* cat = new char[catSize];
-	for (int i = 0; i < catSize; i++)
+	for (int i = 0; i < this->length; i++)
 	{
-
+		cat[i] = this->str[i];
 	}
+	for (int i = 0; i < b.length; i++)
+	{
+		cat[this->length + i] = b.str[i];
+	}
+	cat[catSize - 1] = '\0';
+	delete[] this->str;
+	this->str = cat;
+	this->length = catSize - 1;
 }
+void MyString::MyDelChr(char c)
+{
+	int charIndex = 0;
+	for (int i = 0; i < length; i++)
+	{
+		if (str[i] == c)
+		{
+			charIndex = i;
+			break;
+		}
+	}
+	if (charIndex == -1)
+	{
+		return;
+	}
+	int size = this->length - 1;
+	char* newStr = new char[size + 1];
+	for (int i = 0; i < charIndex; i++)
+	{
+		newStr[i] = this->str[i];
+	}
+	for (int i = charIndex; i < size; i++)
+	{
+		newStr[i] = this->str[i +1 ];
+	}
+	newStr[size] = '\0';
+	delete[] this->str;
+	this->str = newStr;
+	this->length = size + 1;
+}
+
+int MyString::MyStrCmp(MyString& b)
+{
+	int minLen = 0;
+	if (this->length < b.length)
+	{
+		minLen = this->length;
+	}
+	else
+	{
+		minLen = b.length;
+	}
+	for (int i = 0; i < minLen; i++)
+	{
+		if (this->str[i] > b.str[i])
+		{
+			return 1;
+		}
+		else if (this->str[i] < b.str[i])
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (this->length > b.length)
+	{
+		
+	}
+	else if (this->length < b.length)
+	{
+		return -1;
+	}
+	return 0;
+}
+

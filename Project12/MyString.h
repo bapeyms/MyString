@@ -2,7 +2,7 @@
 class MyString
 {
 	char* str;
-	int lenght;
+	int length;
 public:
 	MyString();
 	MyString(int size);
@@ -16,5 +16,7 @@ public:
 	int  MyChr(char c);
 	int MyStrLen();
 	void MyStrCat(MyString& b);
+	void MyDelChr(char c);
+	int MyStrCmp(MyString& b);
 };
 

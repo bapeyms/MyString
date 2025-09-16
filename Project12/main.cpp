@@ -7,23 +7,41 @@ int main()
 	MyString obj1("Hello World!");
 	cout << "#1" << endl;
 	obj1.Print();
+	cout << endl;
 
 	MyString obj2 = obj1;
 	cout << "#2" << endl;
 	obj2.Print();
+	cout << endl;
 
 	MyString obj3("Bye World!");
 	cout << "#3" << endl;
 	obj3.Print();
+	cout << endl;
 
 	cout << "- Strstr: " << endl;
 	cout << obj2.MyStrStr("wo") << endl;
+
 	cout << "- Strcpy: " << endl;
 	obj1.MyStrcpy(obj3);
 	obj1.Print();
+
 	cout << "- Chr: " << endl;
 	cout << obj1.MyChr('d');
 	cout << endl;
+
 	cout << "- Strlen: " << endl;
 	cout << obj1.MyStrLen();
+	cout << endl;
+
+	cout << "- Strcat: " << endl;
+	obj2.MyStrCat(obj3);
+	obj2.Print();
+
+	cout << "- DelChr: " << endl;
+	obj3.MyDelChr('W');
+	obj3.Print();
+
+	cout << "- StrCmp: " << endl;
+	cout << obj3.MyStrCmp(obj2);
 }
