@@ -31,6 +31,16 @@ MyString::~MyString()
 	length = 0;
 }
 
+MyString::MyString(MyString&& obj)
+{
+	str = obj.str;
+	obj.str = nullptr;
+	length = obj.length;
+	obj.length = 0;
+}
+
+
+
 void MyString::Print()
 {
 	cout << str << endl;

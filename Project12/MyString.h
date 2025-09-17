@@ -10,6 +10,8 @@ public:
 	MyString(const MyString& obj);
 	~MyString();
 
+	MyString(MyString&& obj);
+
 	void Print();
 	bool MyStrStr(const char* st);
 	void MyStrcpy(MyString& obj);

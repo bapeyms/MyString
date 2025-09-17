@@ -19,6 +19,12 @@ int main()
 	obj3.Print();
 	cout << endl;
 
+	cout << "Move constructor: " << endl;
+	MyString obj4("My World!");
+	MyString obj5 = move(obj4);
+	obj5.Print();
+	cout << endl;
+
 	cout << "- Strstr: " << endl;
 	cout << obj2.MyStrStr("wo") << endl;
 
