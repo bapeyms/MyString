@@ -27,7 +27,7 @@ int main()
 	obj1.Print();
 
 	cout << "- Chr: " << endl;
-	cout << obj1.MyChr('d');
+	cout << obj1.MyChr('h');
 	cout << endl;
 
 	cout << "- Strlen: " << endl;
@@ -39,7 +39,7 @@ int main()
 	obj2.Print();
 
 	cout << "- DelChr: " << endl;
-	obj3.MyDelChr('W');
+	obj3.MyDelChr('l');
 	obj3.Print();
 
 	cout << "- StrCmp: " << endl;

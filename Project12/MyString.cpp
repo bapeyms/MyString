@@ -95,33 +95,28 @@ void MyString::MyStrCat(MyString& b)
 }
 void MyString::MyDelChr(char c)
 {
-	int charIndex = 0;
-	for (int i = 0; i < length; i++)
+	int count = 0;
+	for (int i = 0; i < length + 1; i++)
 	{
 		if (str[i] == c)
 		{
-			charIndex = i;
-			break;
+			count++;
 		}
 	}
-	if (charIndex == -1)
-	{
-		return;
-	}
-	int size = this->length - 1;
+	int size = length - count;
 	char* newStr = new char[size + 1];
-	for (int i = 0; i < charIndex; i++)
+	int charIndex = 0;
+	for (int i = 0; i < length + 1; i++)
 	{
-		newStr[i] = this->str[i];
-	}
-	for (int i = charIndex; i < size; i++)
-	{
-		newStr[i] = this->str[i +1 ];
-	}
-	newStr[size] = '\0';
-	delete[] this->str;
-	this->str = newStr;
-	this->length = size + 1;
+		if (str[i] != c)
+		{
+			newStr[charIndex] = str[i];
+			charIndex++;
+		}
+	};
+	delete[] str;
+	str = newStr;
+	length = size + 1;
 }
 
 int MyString::MyStrCmp(MyString& b)
