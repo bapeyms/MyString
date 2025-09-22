@@ -6,29 +6,33 @@ MyString::MyString() :str(nullptr), length(0)
 {
 	length = 80;
 	str = new char[length] {};
+	count++;
 }
 MyString::MyString(int size)
 {
 	length = size;
 	str = new char[length] {};
+	count++;
 }
 MyString::MyString(const char* st)
 {
 	length = strlen(st);
 	str = new char[length + 1];
 	strcpy_s(str, length + 1, st);
+	count++;
 }
 MyString::MyString(const MyString& obj)
 {
 	length = obj.length;
 	str = new char[length + 1];
 	strcpy_s(str, length + 1, obj.str);
-
+	count++;
 } 
 MyString::~MyString()
 {
 	delete[] str;
 	length = 0;
+	count--;
 }
 
 MyString::MyString(MyString&& obj)
@@ -37,16 +41,14 @@ MyString::MyString(MyString&& obj)
 	obj.str = nullptr;
 	length = obj.length;
 	obj.length = 0;
+	count++;
 }
-
-
 
 void MyString::Print()
 {
 	cout << str << endl;
 	cout << length << endl;
 }
-
 bool MyString::MyStrStr(const char* st)
 {
 	const char* s = strstr(this->str, str);
@@ -86,10 +88,11 @@ int MyString::MyStrLen()
 	}
 	return len;
 }
-void MyString::MyStrCat(MyString& b)
+void MyString::MyStrCat(const MyString& b)
 {
 	int catSize = this->length + b.length + 1;
 	char* cat = new char[catSize];
+
 	for (int i = 0; i < this->length; i++)
 	{
 		cat[i] = this->str[i];
@@ -166,3 +169,7 @@ int MyString::MyStrCmp(MyString& b)
 	return 0;
 }
 
+void MyString::PrintCount()
+{
+	cout << "Count: " << count << endl;
+}
