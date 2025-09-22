@@ -25,6 +25,8 @@ int main()
 	obj5.Print();
 	cout << endl;
 
+	MyString::PrintCount();
+
 	cout << "- Strstr: " << endl;
 	cout << obj2.MyStrStr("wo") << endl;
 

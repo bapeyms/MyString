@@ -169,7 +169,9 @@ int MyString::MyStrCmp(MyString& b)
 	return 0;
 }
 
+int MyString::count = 0;
 void MyString::PrintCount()
 {
-	cout << "Count: " << count << endl;
+	cout << "Count: " << count << endl << endl;
 }
+
