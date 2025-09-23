@@ -175,3 +175,11 @@ void MyString::PrintCount()
 	cout << "Count: " << count << endl << endl;
 }
 
+MyString MyString::operator+(const char* b)
+{
+	MyString result(length + strlen(b) + 2);
+	strcpy_s(result.str, length + 1, str);
+	strcat_s(result.str, length + strlen(b) + 2, b);
+	return result;
+}
+

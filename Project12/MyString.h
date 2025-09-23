@@ -24,5 +24,6 @@ public:
 	int MyStrCmp(MyString& b);
 
 	static void PrintCount();
+	MyString operator+(const char* b);
 };
 
