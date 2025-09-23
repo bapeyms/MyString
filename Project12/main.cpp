@@ -52,4 +52,7 @@ int main()
 
 	cout << "- StrCmp: " << endl;
 	cout << obj3.MyStrCmp(obj2);
+
+	MyString a("Hello");
+	MyString b("world!");
 }
