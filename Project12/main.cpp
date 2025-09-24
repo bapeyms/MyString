@@ -46,17 +46,31 @@ int main()
 	obj2.MyStrCat(obj3);
 	obj2.Print();
 
-	cout << "- Strcat through the operator: " << endl;
-	MyString a("Hello to the ");
-	a.Print();
-	MyString result = a + "world!";
-	result.Print();
-
 	cout << "- DelChr: " << endl;
 	obj3.MyDelChr('l');
 	obj3.Print();
 
 	cout << "- StrCmp: " << endl;
 	cout << obj3.MyStrCmp(obj2);
-	cout << endl;
+
+	cout << endl << "- OPERATORS -" << endl;
+	cout << "- Strcat through the operator: " << endl;
+	MyString n("Hello to the ");
+	n.Print();
+	MyString result1 = n + "world!";
+	result1.Print();
+
+	MyString a("Hello");
+	MyString b("world");
+	cout << endl << "a++" << endl;
+	a++;
+	a.Print();
+
+	b--;
+	b.Print();
+
+
+
+
+	
 }

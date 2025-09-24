@@ -21,6 +21,14 @@ MyString::MyString(const char* st)
 	strcpy_s(str, length + 1, st);
 	count++;
 }
+MyString::MyString(const char* st, int size)
+{
+	length = size;
+	str = new char[length + 1];
+	strcpy_s(str, length + 1, st);
+	str[length] = '\0';
+	count++;
+}
 MyString::MyString(const MyString& obj)
 {
 	length = obj.length;
@@ -126,7 +134,7 @@ void MyString::MyDelChr(char c)
 			newStr[charIndex] = str[i];
 			charIndex++;
 		}
-	};
+	}
 	delete[] str;
 	str = newStr;
 	length = size + 1;
@@ -181,5 +189,37 @@ MyString MyString::operator+(const char* b)
 	strcpy_s(result.str, length + 1, str);
 	strcat_s(result.str, length + strlen(b) + 2, b);
 	return result;
+}
+
+MyString MyString::operator++(int)
+{
+	MyString temp(str, length);
+	char* newStr = new char[length + 1 + 1];
+	strcpy_s(newStr, length + 1 + 1, this->str);
+	delete[] str;
+	str = newStr;
+	length++;
+	str[length] = '\0';
+	return temp;
+}
+
+MyString MyString::operator--(int)
+{
+	MyString temp(str, length);
+	char* newStr = new char[length];
+	for (int i = 0; i < length - 1; i++)
+	{
+		newStr[i] = str[i];
+	}
+	newStr[length - 1] = '\0';
+	delete[] str;
+	str = newStr;
+	length--;
+	return temp;
+}
+
+MyString MyString::operator+=(MyString& b)
+{
+	char* newStr = new char[this->length + b.length + 2];
 }
 
