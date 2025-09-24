@@ -27,6 +27,7 @@ int main()
 
 	MyString::PrintCount();
 
+	cout << "--- STR ---" << endl;
 	cout << "- Strstr: " << endl;
 	cout << obj2.MyStrStr("wo") << endl;
 
@@ -52,9 +53,10 @@ int main()
 
 	cout << "- StrCmp: " << endl;
 	cout << obj3.MyStrCmp(obj2);
+	cout << endl;
 
-	cout << endl << "- OPERATORS -" << endl;
-	cout << "- Strcat through the operator: " << endl;
+	cout << endl << "--- OPERATORS ---" << endl;
+	cout << "+" << endl;
 	MyString n("Hello to the ");
 	n.Print();
 	MyString result1 = n + "world!";
@@ -62,15 +64,20 @@ int main()
 
 	MyString a("Hello");
 	MyString b("world");
+	
+	cout << endl << "a += b" << endl;
+	a += b;
+	a.Print();
+
+	cout << endl << "a -=" << endl;
+	a -= "lo";
+	a.Print();
+
 	cout << endl << "a++" << endl;
 	a++;
 	a.Print();
 
+	cout << endl << "b--" << endl;
 	b--;
 	b.Print();
-
-
-
-
-	
 }

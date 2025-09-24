@@ -10,10 +10,13 @@ public:
 	MyString(int size);
 	MyString(const char* st);
 	MyString(const char* st, int size);
-	MyString(const MyString& obj);
 	~MyString();
 
+	MyString(const MyString& obj);
+	MyString& operator=(const MyString& obj);
+
 	MyString(MyString&& obj);
+	MyString& operator=(MyString&& obj);
 
 	void Print();
 	bool MyStrStr(const char* st);
@@ -26,8 +29,10 @@ public:
 
 	static void PrintCount();
 	MyString operator+(const char* b);
+
 	MyString operator++(int);
 	MyString operator--(int);
 	MyString operator+=(MyString& b);
+	MyString operator-=(const char* c);
 };
 

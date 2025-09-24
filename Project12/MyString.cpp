@@ -29,18 +29,34 @@ MyString::MyString(const char* st, int size)
 	str[length] = '\0';
 	count++;
 }
+MyString::~MyString()
+{
+	delete[] str;
+	length = 0;
+	count--;
+}
+
 MyString::MyString(const MyString& obj)
 {
 	length = obj.length;
 	str = new char[length + 1];
 	strcpy_s(str, length + 1, obj.str);
 	count++;
-} 
-MyString::~MyString()
+}
+MyString& MyString::operator=(const MyString& obj)
 {
-	delete[] str;
-	length = 0;
-	count--;
+	if (this == &obj)
+	{
+		return *this;
+	}
+	if (str != nullptr)
+	{
+		delete[] str;
+	}
+	str = new char[strlen(obj.str) + 1];
+	strcpy_s(str, strlen(obj.str) + 1, obj.str);
+	length = obj.length;
+	return *this;
 }
 
 MyString::MyString(MyString&& obj)
@@ -51,6 +67,18 @@ MyString::MyString(MyString&& obj)
 	obj.length = 0;
 	count++;
 }
+MyString& MyString::operator=(MyString&& obj)
+{
+	if (str != nullptr)
+	{
+		delete[] str;
+	}
+	str = obj.str;
+	obj.str = nullptr;
+	length = obj.length;
+	obj.length = 0;
+	return *this;
+}
 
 void MyString::Print()
 {
@@ -59,7 +87,7 @@ void MyString::Print()
 }
 bool MyString::MyStrStr(const char* st)
 {
-	const char* s = strstr(this->str, str);
+	const char* s = strstr(this->str, st);
 	if (s != nullptr)
 	{
 		return true;
@@ -220,6 +248,39 @@ MyString MyString::operator--(int)
 
 MyString MyString::operator+=(MyString& b)
 {
-	char* newStr = new char[this->length + b.length + 2];
+	char* newStr = new char[length + b.length + 1];
+	strcpy_s(newStr, length + 1, str);
+	strcat_s(newStr, length + b.length + 1, b.str);
+	delete[] str;
+	str = newStr;
+	length += b.length;
+	return *this;
+}
+
+MyString MyString::operator-=(const char* c)
+{
+	char* newStr = new char[length + 1];
+	int charIndex = 0;
+	for (int i = 0; i < length; i++)
+	{
+		bool check = false;
+		for (int j = 0; c[j] != '\0'; j++)
+		{
+			if (str[i] == c[j])
+			{
+				check = true;
+				break;
+			}
+		}
+		if (!check)
+		{
+			newStr[charIndex++] = str[i];
+		}
+	}
+	newStr[charIndex] = '\0';
+	delete[] str;
+	str = newStr;
+	length = charIndex;
+	return *this;
 }
 
