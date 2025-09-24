@@ -219,6 +219,11 @@ MyString MyString::operator+(const char* b)
 	return result;
 }
 
+MyString MyString::operator-(const char* c)
+{
+	return MyString();
+}
+
 MyString MyString::operator++(int)
 {
 	MyString temp(str, length);

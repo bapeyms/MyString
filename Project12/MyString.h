@@ -29,6 +29,7 @@ public:
 
 	static void PrintCount();
 	MyString operator+(const char* b);
+	MyString operator-(const char* c);
 
 	MyString operator++(int);
 	MyString operator--(int);
