@@ -218,10 +218,38 @@ MyString MyString::operator+(const char* b)
 	strcat_s(result.str, length + strlen(b) + 2, b);
 	return result;
 }
-
 MyString MyString::operator-(const char* c)
 {
-	return MyString();
+	int subLen = strlen(c);
+	if (subLen == 0 || subLen > length)
+	{
+		return *this;
+	}
+	for (int i = length - subLen; i >= 0; i--)
+	{
+		bool match = true;
+		for (int j = 0; j < subLen; j++)
+		{
+			if (str[i + j] != c[j])
+			{
+				match = false;
+				break;
+			}
+		}
+		if (match)
+		{
+			int newLen = length - subLen;
+			char* newStr = new char[newLen + 1];
+			for (int k = 0; k < i; k++)
+			{
+				newStr[k] = str[k];
+			}
+			strcpy_s(newStr + i, newLen - i + 1, str + i + subLen);
+			MyString result(newStr);
+			delete[] newStr;
+			return result;
+		}
+	}
 }
 
 MyString MyString::operator++(int)
@@ -235,7 +263,6 @@ MyString MyString::operator++(int)
 	str[length] = '\0';
 	return temp;
 }
-
 MyString MyString::operator--(int)
 {
 	MyString temp(str, length);
@@ -250,7 +277,6 @@ MyString MyString::operator--(int)
 	length--;
 	return temp;
 }
-
 MyString MyString::operator+=(MyString& b)
 {
 	char* newStr = new char[length + b.length + 1];
@@ -261,7 +287,6 @@ MyString MyString::operator+=(MyString& b)
 	length += b.length;
 	return *this;
 }
-
 MyString MyString::operator-=(const char* c)
 {
 	char* newStr = new char[length + 1];
@@ -311,9 +336,7 @@ bool MyString::operator>(MyString& b)
 			return false;
 		}
 	}
-	return this->length > b.length;
 }
-
 bool MyString::operator==(const MyString& b)
 {
 	if (this->length != b.length) 

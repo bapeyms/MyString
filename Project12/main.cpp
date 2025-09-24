@@ -61,6 +61,9 @@ int main()
 	n.Print();
 	MyString result1 = n + "world!";
 	result1.Print();
+	cout << endl << "-" << endl;
+	MyString result2 = result1 - "rld!";
+	result2.Print();
 
 	MyString a("Hello");
 	MyString b("world");
