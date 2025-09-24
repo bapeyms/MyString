@@ -284,3 +284,37 @@ MyString MyString::operator-=(const char* c)
 	return *this;
 }
 
+bool MyString::operator>(MyString& b)
+{
+	int minLen = 0;
+	if (this->length < b.length)
+	{
+		minLen = this->length;
+	}
+	else
+	{
+		minLen = b.length;
+	}
+	for (int i = 0; i < minLen; i++)
+	{
+		if (this->str[i] > b.str[i])
+		{
+			return true;
+		}
+		if (this->str[i] < b.str[i])
+		{
+			return false;
+		}
+	}
+	return this->length > b.length;
+}
+
+bool MyString::operator==(const MyString& b)
+{
+	if (this->length != b.length) 
+	{
+		return false;
+	}
+	return strcmp(this->str, b.str) == 0;
+}
+

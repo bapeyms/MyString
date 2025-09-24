@@ -34,5 +34,7 @@ public:
 	MyString operator--(int);
 	MyString operator+=(MyString& b);
 	MyString operator-=(const char* c);
+	bool operator>(MyString& b);
+	bool operator==(const MyString& b);
 };
 

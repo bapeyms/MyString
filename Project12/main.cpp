@@ -64,6 +64,8 @@ int main()
 
 	MyString a("Hello");
 	MyString b("world");
+	MyString c("Hello");
+	MyString d("Hello");
 	
 	cout << endl << "a += b" << endl;
 	a += b;
@@ -80,4 +82,24 @@ int main()
 	cout << endl << "b--" << endl;
 	b--;
 	b.Print();
+
+	cout << endl << ">" << endl;
+	if (a > b)
+	{
+		cout << "a > b" << endl;
+	}
+	else
+	{
+		cout << "a <= b" << endl;
+	}
+
+	cout << endl << "==" << endl;
+	if (d == c)
+	{
+		cout << "d == c" << endl;
+	}
+	else
+	{
+		cout << "d != c" << endl;
+	}
 }
