@@ -4,7 +4,8 @@ class MyString
 	char* str;
 	int length;
 	static int count;
-
+	friend ostream& operator<<(ostream& os, MyString& obj);
+	friend istream& operator>>(istream& is, MyString& obj);
 public:
 	MyString();
 	MyString(int size);
@@ -39,6 +40,9 @@ public:
 	bool operator==(const MyString& b);
 
 	int GetLength() const;
+	char* GetStr() const;
+	void SetStr(const char* s);
+	void SetLength(int l);
 	char operator[](int index);
 };
 

@@ -350,6 +350,25 @@ int MyString::GetLength() const
 {
 	return length;
 }
+char* MyString::GetStr() const
+{
+	return str;
+}
+
+void MyString::SetStr(const char* s)
+{
+	if (str != nullptr)
+	{
+		delete[] str;
+	}
+	str = new char[strlen(s) + 1];
+	strcpy_s(str, strlen(s) + 1, s);
+}
+
+void MyString::SetLength(int l)
+{
+	length = l;
+}
 
 char MyString::operator[](int index)
 {
@@ -360,3 +379,15 @@ char MyString::operator[](int index)
 	return -1;
 }
 
+ostream& operator<<(ostream& os, MyString& obj)
+{
+	os << "Length: " << obj.length << endl;
+	os << "Str: " << obj.str << endl;
+	return os;
+}
+
+istream& operator>>(istream& is, MyString& obj)
+{
+	cout << "Enter length: " << obj.length << endl;
+	cout << "Enter str: " << obj.str << endl;
+}
