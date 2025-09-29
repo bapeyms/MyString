@@ -346,3 +346,17 @@ bool MyString::operator==(const MyString& b)
 	return strcmp(this->str, b.str) == 0;
 }
 
+int MyString::GetLength()
+{
+	return length;
+}
+
+char MyString::operator[](int index)
+{
+	if (index >= 0 && index < length)
+	{
+		return str[index];
+	}
+	return -1;
+}
+

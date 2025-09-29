@@ -37,5 +37,8 @@ public:
 	MyString operator-=(const char* c);
 	bool operator>(MyString& b);
 	bool operator==(const MyString& b);
+
+	int GetLength();
+	char operator[](int index);
 };
 

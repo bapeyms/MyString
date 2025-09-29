@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	MyString obj1("Hello World!");
+	/*MyString obj1("Hello World!");
 	cout << "#1" << endl;
 	obj1.Print();
 	cout << endl;
@@ -104,5 +104,20 @@ int main()
 	else
 	{
 		cout << "d != c" << endl;
+	}*/
+
+	MyString obj6("Hello World");
+	obj6.Print();
+	for (int i = 0; i < obj6.GetLength(); i++)
+	{
+		cout << obj6[i] << " ";
 	}
+	cout << endl;
+
+	string str = "Hello World";
+	for (int i = 0; i < str.length(); i++)
+	{
+		cout << str[i] << " ";
+	}
+	cout << endl;
 }
