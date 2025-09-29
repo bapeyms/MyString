@@ -379,15 +379,20 @@ char MyString::operator[](int index)
 	return -1;
 }
 
-ostream& operator<<(ostream& os, MyString& obj)
+ostream& operator<<(std::ostream& is, const MyString& obj)
 {
-	os << "Length: " << obj.length << endl;
-	os << "Str: " << obj.str << endl;
-	return os;
+	is << obj.str;
+	return is;
 }
 
-istream& operator>>(istream& is, MyString& obj)
+istream& operator>>(std::istream& is, MyString& obj)
 {
-	cout << "Enter length: " << obj.length << endl;
-	cout << "Enter str: " << obj.str << endl;
+	const int N = 265;
+	char data[N];
+
+	delete[] obj.str;
+	obj.length = strlen(data);
+	obj.str = new char[obj.length + 1];
+	strcpy_s(obj.str, obj.length + 1, data);
+	return is;
 }

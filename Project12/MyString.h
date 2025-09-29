@@ -1,11 +1,10 @@
 #pragma once
+#include <iostream>
 class MyString
 {
 	char* str;
 	int length;
 	static int count;
-	friend ostream& operator<<(ostream& os, MyString& obj);
-	friend istream& operator>>(istream& is, MyString& obj);
 public:
 	MyString();
 	MyString(int size);
@@ -18,6 +17,9 @@ public:
 
 	MyString(MyString&& obj);
 	MyString& operator=(MyString&& obj);
+
+	friend std::ostream& operator<<(std::ostream& is, const MyString& obj);
+	friend std::istream& operator>>(std::istream& is, MyString& obj);
 
 	void Print() const;
 	bool MyStrStr(const char* st);
