@@ -120,4 +120,7 @@ int main()
 		cout << str[i] << " ";
 	}
 	cout << endl;
+
+	const MyString OBJ7("Bye World");
+	OBJ7.Print();
 }

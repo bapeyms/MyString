@@ -80,7 +80,7 @@ MyString& MyString::operator=(MyString&& obj)
 	return *this;
 }
 
-void MyString::Print()
+void MyString::Print() const
 {
 	cout << str << endl;
 	cout << length << endl;
@@ -346,7 +346,7 @@ bool MyString::operator==(const MyString& b)
 	return strcmp(this->str, b.str) == 0;
 }
 
-int MyString::GetLength()
+int MyString::GetLength() const
 {
 	return length;
 }

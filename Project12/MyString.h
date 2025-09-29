@@ -18,7 +18,7 @@ public:
 	MyString(MyString&& obj);
 	MyString& operator=(MyString&& obj);
 
-	void Print();
+	void Print() const;
 	bool MyStrStr(const char* st);
 	void MyStrcpy(MyString& obj);
 	int  MyChr(char c);
@@ -38,7 +38,7 @@ public:
 	bool operator>(MyString& b);
 	bool operator==(const MyString& b);
 
-	int GetLength();
+	int GetLength() const;
 	char operator[](int index);
 };
 
