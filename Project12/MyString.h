@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+using namespace std;
 class MyString
 {
 	char* str;
@@ -11,6 +12,20 @@ public:
 	MyString(const char* st);
 	MyString(const char* st, int size);
 	~MyString();
+
+	MyString(initializer_list<char> a)
+	{
+		cout << a.size() << endl;
+		length = a.size();
+		str = new char[length + 1];
+		for (auto x = a.begin(); x != a.end(); x++)
+		{
+			*str = *x;
+			str++;
+		}
+		*str = '\0';
+		str -= length;
+	}
 
 	MyString(const MyString& obj);
 	MyString& operator=(const MyString& obj);

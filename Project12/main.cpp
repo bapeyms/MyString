@@ -123,4 +123,8 @@ int main()
 
 	const MyString OBJ7("Bye World");
 	OBJ7.Print();
+	cout << endl;
+
+	MyString obj8{ 't', 'e', 's', 't' };
+	obj8.Print();
 }
